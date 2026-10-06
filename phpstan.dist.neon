@@ -8,3 +8,6 @@ parameters:
         - tests/
     symfony:
         containerXmlPath: var/cache/dev/App_KernelDevDebugContainer.xml
+    doctrine:
+        # Maker generates `?string $name = null` for NOT NULL columns (a new entity has no value yet)
+        allowNullablePropertyForRequiredField: true
