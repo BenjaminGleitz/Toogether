@@ -1,11 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use App\Repository\CityRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CityRepository::class)]
+#[ORM\UniqueConstraint(name: 'uniq_city_name_country', columns: ['name', 'country_id'])]
+#[UniqueEntity(fields: ['name', 'country'])]
 class City
 {
     #[ORM\Id]
@@ -14,10 +20,13 @@ class City
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank]
+    #[Assert\Length(max: 50)]
     private ?string $name = null;
 
     #[ORM\ManyToOne(inversedBy: 'cities')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotNull]
     private ?Country $country = null;
 
     public function getId(): ?int
