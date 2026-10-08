@@ -69,6 +69,9 @@ test-dox: ## Lance les tests avec le détail de chaque test
 phpstan: ## Analyse statique
 	vendor/bin/phpstan analyse --memory-limit=1G
 
+phpstan-fix: ## Analyse statique et correction automatique
+	vendor/bin/phpstan analyse --memory-limit=1G --fix
+
 lint: ## Lint du container, des templates Twig et de la config YAML
 	$(CONSOLE) lint:container
 	$(CONSOLE) lint:twig templates/
