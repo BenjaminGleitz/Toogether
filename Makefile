@@ -34,6 +34,9 @@ logs: ## Affiche les logs du serveur web en continu
 cc: ## Vide le cache Symfony
 	$(CONSOLE) cache:clear
 
+url: ## Affiche l'URL du serveur
+	$(SYMFONY) server:status
+
 ## —— Base de données —————————————————————————————————————————————————————
 migration: ## Génère une migration à partir des entités modifiées
 	$(CONSOLE) make:migration
