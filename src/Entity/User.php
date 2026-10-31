@@ -77,6 +77,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Timesta
     #[ORM\JoinColumn(onDelete: 'SET NULL')]
     private ?City $favoriteCity = null;
 
+    #[ORM\Column(options: ['default' => false], type: Types::BOOLEAN)]
+    private bool $isVerified = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -244,6 +247,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Timesta
     public function setFavoriteCity(?City $favoriteCity): static
     {
         $this->favoriteCity = $favoriteCity;
+
+        return $this;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): static
+    {
+        $this->isVerified = $isVerified;
 
         return $this;
     }
