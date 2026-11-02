@@ -83,7 +83,7 @@
       </trans-unit>
       <trans-unit id="RiIr8zs" resname="user.registration.email.title">
         <source>user.registration.email.title</source>
-        <target>Bonjour {{ firstName }}, confirmez votre adresse e-mail</target>
+        <target>Bonjour { firstname }, confirmez votre adresse e-mail</target>
       </trans-unit>
       <trans-unit id="GUf5WaK" resname="user.registration.email.intro">
         <source>user.registration.email.intro</source>
