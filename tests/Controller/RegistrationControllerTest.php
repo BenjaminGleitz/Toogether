@@ -209,7 +209,7 @@ final class RegistrationControllerTest extends WebTestCase
         yield 'empty birthdate' => [['birthdate' => ''], 'Cette valeur ne doit pas être nulle.'];
         yield 'birthdate in the future' => [['birthdate' => '2999-01-01'], 'Cette valeur doit être inférieure à'];
         yield 'empty password' => [['plainPassword' => ''], 'Veuillez saisir un mot de passe.'];
-        yield 'short password' => [['plainPassword' => 'abc'], 'Votre mot de passe doit contenir au moins 6 caractères.'];
+        yield 'short password' => [['plainPassword' => 'abcdefg'], 'Votre mot de passe doit contenir au moins 8 caractères.'];
         yield 'terms not accepted' => [['agreeTerms' => false], "Vous devez accepter les conditions d'utilisation."];
     }
 
