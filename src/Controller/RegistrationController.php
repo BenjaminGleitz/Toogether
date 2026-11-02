@@ -53,8 +53,6 @@ class RegistrationController extends AbstractController
                     ->context(['firstName' => $user->getFirstname()])
             );
 
-            // do anything else you need here, like send an email
-
             return $security->login($user, 'form_login', 'main');
         }
 
