@@ -25,6 +25,54 @@
         <source>home.title</source>
         <target>Accueil</target>
       </trans-unit>
+      <trans-unit id="RJQZQR8" resname="user.gender.male">
+        <source>user.gender.male</source>
+        <target>Homme</target>
+      </trans-unit>
+      <trans-unit id="ACcrQFr" resname="user.gender.female">
+        <source>user.gender.female</source>
+        <target>Femme</target>
+      </trans-unit>
+      <trans-unit id="rLuSE04" resname="user.gender.other">
+        <source>user.gender.other</source>
+        <target>Autre</target>
+      </trans-unit>
+      <trans-unit id="l0X55va" resname="user.field.email">
+        <source>user.field.email</source>
+        <target>Adresse e-mail</target>
+      </trans-unit>
+      <trans-unit id="tVn8Km6" resname="user.field.firstname">
+        <source>user.field.firstname</source>
+        <target>Prénom</target>
+      </trans-unit>
+      <trans-unit id="QbMmQRA" resname="user.field.lastname">
+        <source>user.field.lastname</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="YOhzasD" resname="user.field.gender">
+        <source>user.field.gender</source>
+        <target>Genre</target>
+      </trans-unit>
+      <trans-unit id="5cY2_Kc" resname="user.field.birthdate">
+        <source>user.field.birthdate</source>
+        <target>Date de naissance</target>
+      </trans-unit>
+      <trans-unit id="NacieV7" resname="user.field.password">
+        <source>user.field.password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="ROQ9TO0" resname="user.registration.agree_terms">
+        <source>user.registration.agree_terms</source>
+        <target>J'accepte les conditions d'utilisation</target>
+      </trans-unit>
+      <trans-unit id="oBlc5nm" resname="user.registration.title">
+        <source>user.registration.title</source>
+        <target>Créer un compte</target>
+      </trans-unit>
+      <trans-unit id="sELC2QD" resname="user.registration.submit">
+        <source>user.registration.submit</source>
+        <target>Créer un compte</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

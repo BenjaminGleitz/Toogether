@@ -90,7 +90,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Timesta
         return $this->email;
     }
 
-    public function setEmail(string $email): static
+    public function setEmail(?string $email): static
     {
         $this->email = $email;
 
@@ -160,7 +160,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Timesta
         return $this->firstname;
     }
 
-    public function setFirstname(string $firstname): static
+    public function setFirstname(?string $firstname): static
     {
         $this->firstname = $firstname;
 
@@ -172,7 +172,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Timesta
         return $this->lastname;
     }
 
-    public function setLastname(string $lastname): static
+    public function setLastname(?string $lastname): static
     {
         $this->lastname = $lastname;
 
@@ -184,7 +184,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Timesta
         return $this->gender;
     }
 
-    public function setGender(Gender $gender): static
+    public function setGender(?Gender $gender): static
     {
         $this->gender = $gender;
 
@@ -196,7 +196,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Timesta
         return $this->birthdate;
     }
 
-    public function setBirthdate(\DateTimeImmutable $birthdate): static
+    public function setBirthdate(?\DateTimeImmutable $birthdate): static
     {
         $this->birthdate = $birthdate;
 
