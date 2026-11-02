@@ -73,6 +73,10 @@
         <source>user.registration.submit</source>
         <target>Créer un compte</target>
       </trans-unit>
+      <trans-unit id="996uxFf" resname="user.registration.flash.email_verified">
+        <source>user.registration.flash.email_verified</source>
+        <target>Votre adresse e-mail a bien été vérifiée.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
