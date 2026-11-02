@@ -224,6 +224,37 @@ final class RegistrationControllerTest extends WebTestCase
         self::assertSame(1, UserFactory::repository()->count([]));
     }
 
+    public function testLoggedInUserIsRedirectedAwayFromRegisterPage(): void
+    {
+        $this->client->loginUser(UserFactory::createOne());
+
+        $this->client->request('GET', '/register');
+
+        self::assertResponseRedirects('/');
+    }
+
+    public function testLoggedInUserCannotSubmitRegistration(): void
+    {
+        $this->client->loginUser(UserFactory::createOne());
+
+        // Form displayed before logging in (e.g. in another tab), submitted once logged in
+        $this->client->request('POST', '/register', [
+            'registration_form' => [
+                'email' => 'other@example.com',
+                'firstname' => 'Jane',
+                'lastname' => 'Doe',
+                'gender' => Gender::Female->value,
+                'birthdate' => '1990-05-17',
+                'plainPassword' => self::PASSWORD,
+                'agreeTerms' => '1',
+            ],
+        ]);
+
+        self::assertResponseRedirects('/');
+        self::assertSame(1, UserFactory::repository()->count([]));
+        self::assertQueuedEmailCount(0);
+    }
+
     public function testEmailIsStoredInLowercase(): void
     {
         $this->submitRegistration(['email' => 'Jane@Example.COM']);
