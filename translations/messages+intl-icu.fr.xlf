@@ -77,6 +77,30 @@
         <source>user.registration.flash.email_verified</source>
         <target>Votre adresse e-mail a bien été vérifiée.</target>
       </trans-unit>
+      <trans-unit id="Y4G7sox" resname="user.registration.email.subject">
+        <source>user.registration.email.subject</source>
+        <target>Confirmez votre adresse e-mail</target>
+      </trans-unit>
+      <trans-unit id="RiIr8zs" resname="user.registration.email.title">
+        <source>user.registration.email.title</source>
+        <target>Bonjour {{ firstName }}, confirmez votre adresse e-mail</target>
+      </trans-unit>
+      <trans-unit id="GUf5WaK" resname="user.registration.email.intro">
+        <source>user.registration.email.intro</source>
+        <target>Merci de vous être inscrit sur Toogether. Pour activer votre compte, confirmez votre adresse e-mail :</target>
+      </trans-unit>
+      <trans-unit id="XKoOKtP" resname="user.registration.email.link">
+        <source>user.registration.email.link</source>
+        <target>Confirmer l'adresse e-mail</target>
+      </trans-unit>
+      <trans-unit id="enZGjGZ" resname="user.registration.email.expires">
+        <source>user.registration.email.expires</source>
+        <target>Votre lien de confirmation expire dans { expiresIn }.</target>
+      </trans-unit>
+      <trans-unit id="BpBpVqw" resname="user.registration.email.signature">
+        <source>user.registration.email.signature</source>
+        <target>À bientôt sur Toogether !</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
