@@ -1,0 +1,2 @@
+workers:
+    messenger_consume_async: ~
