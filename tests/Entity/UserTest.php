@@ -89,6 +89,24 @@ final class UserTest extends EntityTestCase
         self::assertArrayHasKey('email', $this->violations($this->user()));
     }
 
+    public function testEmailIsTrimmedAndLowercased(): void
+    {
+        self::assertSame('élodie@example.com', (new User())->setEmail('  ÉLODIE@Example.COM ')->getEmail());
+    }
+
+    public function testNullEmailIsAccepted(): void
+    {
+        // The form calls setEmail(null) on an empty field, before validation: it must not crash
+        self::assertNull((new User())->setEmail(null)->getEmail());
+    }
+
+    public function testDuplicateEmailWithDifferentCaseIsRejectedByValidation(): void
+    {
+        UserFactory::createOne(['email' => 'jane@example.com']);
+
+        self::assertArrayHasKey('email', $this->violations($this->user()->setEmail('Jane@Example.com')));
+    }
+
     public function testDuplicateEmailIsRejectedByDatabase(): void
     {
         UserFactory::createOne(['email' => 'jane@example.com']);

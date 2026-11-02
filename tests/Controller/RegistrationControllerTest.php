@@ -224,6 +224,25 @@ final class RegistrationControllerTest extends WebTestCase
         self::assertSame(1, UserFactory::repository()->count([]));
     }
 
+    public function testEmailIsStoredInLowercase(): void
+    {
+        $this->submitRegistration(['email' => 'Jane@Example.COM']);
+
+        self::assertResponseRedirects('/');
+        self::assertSame(1, UserFactory::repository()->count(['email' => self::EMAIL]));
+    }
+
+    public function testEmailAlreadyUsedWithDifferentCaseIsRejected(): void
+    {
+        UserFactory::createOne(['email' => self::EMAIL]);
+
+        $this->submitRegistration(['email' => 'JANE@example.com']);
+
+        self::assertResponseStatusCodeSame(422);
+        $this->assertFormHasError('Cette valeur est déjà utilisée.');
+        self::assertSame(1, UserFactory::repository()->count([]));
+    }
+
     /**
      * @param array<string, string|bool|null> $overrides
      */

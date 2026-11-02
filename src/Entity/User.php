@@ -92,7 +92,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Timesta
 
     public function setEmail(?string $email): static
     {
-        $this->email = $email;
+        $this->email = null === $email ? null : mb_strtolower(trim($email));
 
         return $this;
     }

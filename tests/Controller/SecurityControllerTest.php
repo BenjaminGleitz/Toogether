@@ -47,6 +47,15 @@ final class SecurityControllerTest extends WebTestCase
         self::assertSame(self::EMAIL, $this->client->getContainer()->get('security.token_storage')->getToken()?->getUserIdentifier());
     }
 
+    public function testLoginIgnoresEmailCaseAndSurroundingSpaces(): void
+    {
+        $this->submitLogin(' Jane@Example.COM ', UserFactory::DEFAULT_PASSWORD);
+
+        self::assertResponseRedirects('/');
+        // The stored (lowercase) email becomes the identifier, not what was typed
+        self::assertSame(self::EMAIL, $this->client->getContainer()->get('security.token_storage')->getToken()?->getUserIdentifier());
+    }
+
     public function testWrongPasswordIsRejected(): void
     {
         $this->submitLogin(self::EMAIL, 'wrong-password');
