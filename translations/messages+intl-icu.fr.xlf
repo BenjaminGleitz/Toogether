@@ -169,6 +169,10 @@
         <source>user.reset_password.reset.submit</source>
         <target>Modifier le mot de passe</target>
       </trans-unit>
+      <trans-unit id="9vvRY39" resname="security.login.forgot_password">
+        <source>security.login.forgot_password</source>
+        <target>Mot de passe oublié ?</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
