@@ -37,6 +37,16 @@ final class SecurityControllerTest extends WebTestCase
         self::assertSelectorTextSame('button[type="submit"]', 'Se connecter');
     }
 
+    public function testLoginPageLinksToForgotPassword(): void
+    {
+        $crawler = $this->client->request('GET', '/login');
+
+        $this->client->click($crawler->selectLink('Mot de passe oublié ?')->link());
+
+        self::assertResponseIsSuccessful();
+        self::assertRouteSame('app_forgot_password_request');
+    }
+
     public function testValidCredentialsLogTheUserIn(): void
     {
         $this->submitLogin(self::EMAIL, UserFactory::DEFAULT_PASSWORD);

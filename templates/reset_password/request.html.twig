@@ -5,6 +5,7 @@
 {% block body %}
     <h1>{{ 'user.reset_password.title'|trans }}</h1>
 
+    {{ form_errors(requestForm) }}
     {{ form_start(requestForm) }}
         {{ form_row(requestForm.email) }}
         <div>
