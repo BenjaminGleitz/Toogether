@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use function Symfony\Component\Translation\t;
 
 /**
  * @extends AbstractType<array<string, mixed>>
@@ -21,10 +22,9 @@ class ResetPasswordRequestFormType extends AbstractType
             ->add('email', EmailType::class, [
                 'attr' => ['autocomplete' => 'email'],
                 'constraints' => [
-                    new NotBlank(
-                        message: 'Please enter your email',
-                    ),
+                    new NotBlank(),
                 ],
+                'label' => t('user.field.email'),
             ])
         ;
     }
