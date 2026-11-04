@@ -31,6 +31,10 @@ final class RegistrationControllerTest extends WebTestCase
     protected function setUp(): void
     {
         $this->client = self::createClient();
+
+        // The "register" rate limit (5 POST per hour per IP) is stored in a filesystem cache pool that
+        // survives between tests and runs: every test submits from the same IP, so start from a clean slate.
+        self::getContainer()->get('cache.rate_limiter')->clear();
     }
 
     public function testRegisterPageIsDisplayedInFrench(): void
