@@ -20,11 +20,14 @@ security:
             provider: app_user_provider
             form_login:
                 login_path: app_login
-                check_path: app_logi
+                check_path: app_login
                 enable_csrf: true
             login_throttling:
                 max_attempts: 5
                 interval: '15 minutes'
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 1209600 # 2 weeks in seconds
             logout:
                 path: app_logout
                 # where to redirect after logout

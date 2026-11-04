@@ -193,6 +193,10 @@
         <source>user.registration.banner.resend</source>
         <target>Renvoyer l'e-mail de vérification</target>
       </trans-unit>
+      <trans-unit id="9h8zM93" resname="security.login.remember_me">
+        <source>security.login.remember_me</source>
+        <target>Se souvenir de moi</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
