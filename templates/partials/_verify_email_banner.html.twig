@@ -1,0 +1,9 @@
+{% if app.user and not app.user.isVerified %}
+    <div class="banner" role="status">
+        <p class="banner__message">{{ 'user.registration.banner.message'|trans }}</p>
+        <form method="post" action="{{ path('app_verify_resend') }}" class="banner__form">
+            <input type="hidden" name="_token" value="{{ csrf_token('verify_resend') }}">
+            <button type="submit" class="btn">{{ 'user.registration.banner.resend'|trans }}</button>
+        </form>
+    </div>
+{% endif %}

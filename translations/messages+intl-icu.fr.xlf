@@ -173,6 +173,26 @@
         <source>security.login.forgot_password</source>
         <target>Mot de passe oublié ?</target>
       </trans-unit>
+      <trans-unit id="aGVeHbO" resname="user.registration.flash.email_already_verified">
+        <source>user.registration.flash.email_already_verified</source>
+        <target>Votre adresse e-mail est déjà vérifiée.</target>
+      </trans-unit>
+      <trans-unit id="X.uF3aS" resname="user.registration.flash.email_resend_too_many">
+        <source>user.registration.flash.email_resend_too_many</source>
+        <target>Vous avez demandé trop de renvois d'e-mails de vérification.</target>
+      </trans-unit>
+      <trans-unit id="uXt7FMl" resname="user.registration.flash.email_resend_success">
+        <source>user.registration.flash.email_resend_success</source>
+        <target>L'e-mail de vérification a été renvoyé avec succès.</target>
+      </trans-unit>
+      <trans-unit id="pzRO0aV" resname="user.registration.banner.message">
+        <source>user.registration.banner.message</source>
+        <target>Un e-mail de confirmation vous a été envoyé. Pensez à vérifier vos spams. Vous ne l'avez pas reçu ?</target>
+      </trans-unit>
+      <trans-unit id="EXC45.3" resname="user.registration.banner.resend">
+        <source>user.registration.banner.resend</source>
+        <target>Renvoyer l'e-mail de vérification</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
