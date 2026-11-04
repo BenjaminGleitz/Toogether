@@ -23,6 +23,10 @@ final class SecurityControllerTest extends WebTestCase
     {
         $this->client = self::createClient();
         UserFactory::createOne(['email' => self::EMAIL]);
+
+        // Login throttling state lives in a filesystem cache pool that survives between tests and runs:
+        // without this, failed logins from previous runs end up blocking the test client's IP.
+        self::getContainer()->get('cache.rate_limiter')->clear();
     }
 
     public function testLoginPageIsDisplayedInFrench(): void

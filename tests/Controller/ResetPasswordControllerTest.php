@@ -30,6 +30,10 @@ final class ResetPasswordControllerTest extends WebTestCase
     protected function setUp(): void
     {
         $this->client = self::createClient();
+
+        // Login throttling state lives in a filesystem cache pool that survives between tests and runs:
+        // without this, failed logins from previous runs end up blocking the test client's IP.
+        self::getContainer()->get('cache.rate_limiter')->clear();
     }
 
     public function testRequestPageIsDisplayedInFrench(): void
