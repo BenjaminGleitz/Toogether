@@ -185,6 +185,14 @@
         <source>user.registration.flash.email_resend_success</source>
         <target>L'e-mail de vérification a été renvoyé avec succès.</target>
       </trans-unit>
+      <trans-unit id="pzRO0aV" resname="user.registration.banner.message">
+        <source>user.registration.banner.message</source>
+        <target>Un e-mail de confirmation vous a été envoyé. Pensez à vérifier vos spams. Vous ne l'avez pas reçu ?</target>
+      </trans-unit>
+      <trans-unit id="EXC45.3" resname="user.registration.banner.resend">
+        <source>user.registration.banner.resend</source>
+        <target>Renvoyer l'e-mail de vérification</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

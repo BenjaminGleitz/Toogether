@@ -7,3 +7,5 @@ body {
 .flash--error   { color: #842029; background: #f8d7da; border-color: #f5c2c7; }
 .flash--warning { color: #664d03; background: #fff3cd; border-color: #ffecb5; }
 .flash--info    { color: #055160; background: #cff4fc; border-color: #b6effb; }
+
+.banner { padding: .75rem 1rem; margin: 1rem 0; border-radius: .25rem; border: 1px solid; background-color: #fff3cd; color: #664d03; }
