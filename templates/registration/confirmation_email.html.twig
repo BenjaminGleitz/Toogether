@@ -1,0 +1,11 @@
+<h1>{{ 'user.registration.email.title'|trans({firstname: firstName}) }}</h1>
+
+<p>{{ 'user.registration.email.intro'|trans }}</p>
+
+<p><a href="{{ signedUrl|raw }}">{{ 'user.registration.email.link'|trans }}</a></p>
+
+<p>{{ 'user.registration.email.expires'|trans({
+    expiresIn: expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle')
+}) }}</p>
+
+<p>{{ 'user.registration.email.signature'|trans }}</p>

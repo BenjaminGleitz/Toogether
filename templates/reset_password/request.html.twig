@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'user.reset_password.title'|trans }}{% endblock %}
+
+{% block body %}
+    <h1>{{ 'user.reset_password.title'|trans }}</h1>
+
+    {{ form_errors(requestForm) }}
+    {{ form_start(requestForm) }}
+        {{ form_row(requestForm.email) }}
+        <div>
+            <small>{{ 'user.reset_password.request.help'|trans }}</small>
+        </div>
+
+        <button class="btn btn-primary">{{ 'user.reset_password.request.submit'|trans }}</button>
+    {{ form_end(requestForm) }}
+{% endblock %}

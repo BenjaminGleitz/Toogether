@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="user.password.not_blank" resname="user.password.not_blank">
+        <source>user.password.not_blank</source>
+        <target>Veuillez saisir un mot de passe.</target>
+      </trans-unit>
+      <trans-unit id="user.password.length" resname="user.password.length">
+        <source>user.password.length</source>
+        <target>Votre mot de passe doit contenir au moins {{ limit }} caractères.</target>
+      </trans-unit>
+      <trans-unit id="user.registration.agree_terms.not_true" resname="user.registration.agree_terms.not_true">
+        <source>user.registration.agree_terms.not_true</source>
+        <target>Vous devez accepter les conditions d'utilisation.</target>
+      </trans-unit>
+      <trans-unit id="user.password.mismatch" resname="user.password.mismatch">
+        <source>user.password.mismatch</source>
+        <target>Les mots de passe ne correspondent pas.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

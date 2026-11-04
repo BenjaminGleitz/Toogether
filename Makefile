@@ -34,6 +34,9 @@ logs: ## Affiche les logs du serveur web en continu
 cc: ## Vide le cache Symfony
 	$(CONSOLE) cache:clear
 
+url: ## Affiche l'URL du serveur
+	$(SYMFONY) server:status
+
 ## —— Base de données —————————————————————————————————————————————————————
 migration: ## Génère une migration à partir des entités modifiées
 	$(CONSOLE) make:migration
@@ -68,6 +71,9 @@ test-dox: ## Lance les tests avec le détail de chaque test
 
 phpstan: ## Analyse statique
 	vendor/bin/phpstan analyse --memory-limit=1G
+
+phpstan-fix: ## Analyse statique et correction automatique
+	vendor/bin/phpstan analyse --memory-limit=1G --fix
 
 lint: ## Lint du container, des templates Twig et de la config YAML
 	$(CONSOLE) lint:container

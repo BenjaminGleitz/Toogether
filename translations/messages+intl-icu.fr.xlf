@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="KRx2tgU" resname="security.login.title">
+        <source>security.login.title</source>
+        <target>Connexion</target>
+      </trans-unit>
+      <trans-unit id="QeF6CpZ" resname="security.login.username">
+        <source>security.login.username</source>
+        <target>Adresse e-mail</target>
+      </trans-unit>
+      <trans-unit id="TT3C_o8" resname="security.login.password">
+        <source>security.login.password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="8PsyqHR" resname="security.login.submit">
+        <source>security.login.submit</source>
+        <target>Se connecter</target>
+      </trans-unit>
+      <trans-unit id="LBBvQZY" resname="home.title">
+        <source>home.title</source>
+        <target>Accueil</target>
+      </trans-unit>
+      <trans-unit id="RJQZQR8" resname="user.gender.male">
+        <source>user.gender.male</source>
+        <target>Homme</target>
+      </trans-unit>
+      <trans-unit id="ACcrQFr" resname="user.gender.female">
+        <source>user.gender.female</source>
+        <target>Femme</target>
+      </trans-unit>
+      <trans-unit id="rLuSE04" resname="user.gender.other">
+        <source>user.gender.other</source>
+        <target>Autre</target>
+      </trans-unit>
+      <trans-unit id="l0X55va" resname="user.field.email">
+        <source>user.field.email</source>
+        <target>Adresse e-mail</target>
+      </trans-unit>
+      <trans-unit id="tVn8Km6" resname="user.field.firstname">
+        <source>user.field.firstname</source>
+        <target>Prénom</target>
+      </trans-unit>
+      <trans-unit id="QbMmQRA" resname="user.field.lastname">
+        <source>user.field.lastname</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="YOhzasD" resname="user.field.gender">
+        <source>user.field.gender</source>
+        <target>Genre</target>
+      </trans-unit>
+      <trans-unit id="5cY2_Kc" resname="user.field.birthdate">
+        <source>user.field.birthdate</source>
+        <target>Date de naissance</target>
+      </trans-unit>
+      <trans-unit id="NacieV7" resname="user.field.password">
+        <source>user.field.password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="ROQ9TO0" resname="user.registration.agree_terms">
+        <source>user.registration.agree_terms</source>
+        <target>J'accepte les conditions d'utilisation</target>
+      </trans-unit>
+      <trans-unit id="oBlc5nm" resname="user.registration.title">
+        <source>user.registration.title</source>
+        <target>Créer un compte</target>
+      </trans-unit>
+      <trans-unit id="sELC2QD" resname="user.registration.submit">
+        <source>user.registration.submit</source>
+        <target>Créer un compte</target>
+      </trans-unit>
+      <trans-unit id="996uxFf" resname="user.registration.flash.email_verified">
+        <source>user.registration.flash.email_verified</source>
+        <target>Votre adresse e-mail a bien été vérifiée.</target>
+      </trans-unit>
+      <trans-unit id="Y4G7sox" resname="user.registration.email.subject">
+        <source>user.registration.email.subject</source>
+        <target>Confirmez votre adresse e-mail</target>
+      </trans-unit>
+      <trans-unit id="RiIr8zs" resname="user.registration.email.title">
+        <source>user.registration.email.title</source>
+        <target>Bonjour { firstname }, confirmez votre adresse e-mail</target>
+      </trans-unit>
+      <trans-unit id="GUf5WaK" resname="user.registration.email.intro">
+        <source>user.registration.email.intro</source>
+        <target>Merci de vous être inscrit sur Toogether. Pour activer votre compte, confirmez votre adresse e-mail :</target>
+      </trans-unit>
+      <trans-unit id="XKoOKtP" resname="user.registration.email.link">
+        <source>user.registration.email.link</source>
+        <target>Confirmer l'adresse e-mail</target>
+      </trans-unit>
+      <trans-unit id="enZGjGZ" resname="user.registration.email.expires">
+        <source>user.registration.email.expires</source>
+        <target>Votre lien de confirmation expire dans { expiresIn }.</target>
+      </trans-unit>
+      <trans-unit id="BpBpVqw" resname="user.registration.email.signature">
+        <source>user.registration.email.signature</source>
+        <target>À bientôt sur Toogether !</target>
+      </trans-unit>
+      <trans-unit id="4H_Xfwl" resname="user.reset_password.flash.success">
+        <source>user.reset_password.flash.success</source>
+        <target>Votre mot de passe a bien été modifié. Vous pouvez maintenant vous connecter.</target>
+      </trans-unit>
+      <trans-unit id="FgiS57K" resname="user.reset_password.email.subject">
+        <source>user.reset_password.email.subject</source>
+        <target>Réinitialisation de votre mot de passe</target>
+      </trans-unit>
+      <trans-unit id="sZWT8PG" resname="user.reset_password.new_password">
+        <source>user.reset_password.new_password</source>
+        <target>Nouveau mot de passe</target>
+      </trans-unit>
+      <trans-unit id="hWlYGvx" resname="user.reset_password.repeat_password">
+        <source>user.reset_password.repeat_password</source>
+        <target>Confirmer le mot de passe</target>
+      </trans-unit>
+      <trans-unit id="hPvGXqI" resname="user.reset_password.check_email.title">
+        <source>user.reset_password.check_email.title</source>
+        <target>E-mail de réinitialisation envoyé</target>
+      </trans-unit>
+      <trans-unit id="7CJ7B4k" resname="user.reset_password.check_email.sent">
+        <source>user.reset_password.check_email.sent</source>
+        <target>Si un compte correspond à cette adresse, un e-mail contenant un lien pour réinitialiser votre mot de passe vient de vous être envoyé.</target>
+      </trans-unit>
+      <trans-unit id="2iG05yI" resname="user.reset_password.check_email.expires">
+        <source>user.reset_password.check_email.expires</source>
+        <target>Ce lien expire dans {expiresIn}.</target>
+      </trans-unit>
+      <trans-unit id="ChxPH_L" resname="user.reset_password.check_email.spam">
+        <source>user.reset_password.check_email.spam</source>
+        <target>Vous n'avez rien reçu ? Vérifiez vos courriers indésirables ou</target>
+      </trans-unit>
+      <trans-unit id="Z221aXo" resname="user.reset_password.check_email.retry">
+        <source>user.reset_password.check_email.retry</source>
+        <target>faites une nouvelle demande</target>
+      </trans-unit>
+      <trans-unit id="5fjxkgN" resname="user.reset_password.title">
+        <source>user.reset_password.title</source>
+        <target>Réinitialiser votre mot de passe</target>
+      </trans-unit>
+      <trans-unit id="yOmc8zV" resname="user.reset_password.request.help">
+        <source>user.reset_password.request.help</source>
+        <target>Saisissez votre adresse e-mail : nous vous enverrons un lien pour réinitialiser votre mot de passe.</target>
+      </trans-unit>
+      <trans-unit id="EJGT93j" resname="user.reset_password.request.submit">
+        <source>user.reset_password.request.submit</source>
+        <target>Envoyer le lien</target>
+      </trans-unit>
+      <trans-unit id="ljlAG3_" resname="user.reset_password.email.title">
+        <source>user.reset_password.email.title</source>
+        <target>Bonjour,</target>
+      </trans-unit>
+      <trans-unit id="zyXibPp" resname="user.reset_password.email.intro">
+        <source>user.reset_password.email.intro</source>
+        <target>Pour réinitialiser votre mot de passe Toogether, cliquez sur le lien suivant :</target>
+      </trans-unit>
+      <trans-unit id="j5R2UYB" resname="user.reset_password.email.expires">
+        <source>user.reset_password.email.expires</source>
+        <target>Ce lien expire dans {expiresIn}. Si vous n'êtes pas à l'origine de cette demande, ignorez simplement cet e-mail.</target>
+      </trans-unit>
+      <trans-unit id="nh8RVxP" resname="user.reset_password.email.signature">
+        <source>user.reset_password.email.signature</source>
+        <target>À bientôt sur Toogether !</target>
+      </trans-unit>
+      <trans-unit id="yv.JR02" resname="user.reset_password.reset.submit">
+        <source>user.reset_password.reset.submit</source>
+        <target>Modifier le mot de passe</target>
+      </trans-unit>
+      <trans-unit id="9vvRY39" resname="security.login.forgot_password">
+        <source>security.login.forgot_password</source>
+        <target>Mot de passe oublié ?</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
