@@ -14,7 +14,11 @@ use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactoryInterface;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\CurrentUser;
+use Symfony\Component\Security\Http\Attribute\IsCsrfTokenValid;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
@@ -81,6 +85,31 @@ class RegistrationController extends AbstractController
         }
 
         $this->addFlash('success', $translator->trans('user.registration.flash.email_verified'));
+
+        return $this->redirectToRoute('app_home');
+    }
+
+    #[Route('/verify/resend', name: 'app_verify_resend', methods: ['POST'])]
+    #[IsGranted('IS_AUTHENTICATED')]
+    #[IsCsrfTokenValid('verify_resend')]
+    public function resendVerification(#[CurrentUser] User $user, RateLimiterFactoryInterface $resendVerificationLimiter, TranslatorInterface $translator): Response
+    {
+        if ($user->isVerified()) {
+            $this->addFlash('info', $translator->trans('user.registration.flash.email_already_verified'));
+
+            return $this->redirectToRoute('app_home');
+        }
+
+        $limiter = $resendVerificationLimiter->create((string) $user->getId());
+        if (!$limiter->consume()->isAccepted()) {
+            $this->addFlash('warning', $translator->trans('user.registration.flash.email_resend_too_many'));
+
+            return $this->redirectToRoute('app_home');
+        }
+
+        $this->emailVerifier->sendEmailConfirmation($user);
+
+        $this->addFlash('success', $translator->trans('user.registration.flash.email_resend_success'));
 
         return $this->redirectToRoute('app_home');
     }
