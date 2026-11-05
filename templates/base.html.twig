@@ -19,6 +19,7 @@
         {% endif %}
     </head>
     <body>
+        {{ include('partials/_header.html.twig') }}
         {{ include('partials/_flash_messages.html.twig') }}
         {{ include('partials/_verify_email_banner.html.twig') }}
         {% block body %}{% endblock %}

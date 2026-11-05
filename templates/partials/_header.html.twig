@@ -1,0 +1,24 @@
+<header>
+    <nav>
+        <ul>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_home') }}"{% if app.current_route == 'app_home' %} aria-current="page"{% endif %}>{{ 'nav.home'|trans }}</a>
+            </li>
+            {% if app.user %}
+                <li class="nav-item">
+                    <form method="post" action="{{ path('app_logout') }}">
+                        <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('logout') }}">
+                        <button type="submit" class="nav-link btn btn-link">{{ 'security.logout'|trans }}</button>
+                    </form>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_login') }}"{% if app.current_route == 'app_login' %} aria-current="page"{% endif %}>{{ 'security.login.link'|trans }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_register') }}"{% if app.current_route == 'app_register' %} aria-current="page"{% endif %}>{{ 'security.register.link'|trans }}</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>

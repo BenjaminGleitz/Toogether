@@ -7,6 +7,7 @@ namespace App\Tests\Controller;
 use App\Entity\User;
 use App\Enum\Gender;
 use App\Factory\UserFactory;
+use App\Tests\ClearsRateLimiters;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
@@ -20,6 +21,7 @@ use Zenstruck\Foundry\Test\ResetDatabase;
 
 final class RegistrationControllerTest extends WebTestCase
 {
+    use ClearsRateLimiters;
     use Factories;
     use ResetDatabase;
 
@@ -31,6 +33,8 @@ final class RegistrationControllerTest extends WebTestCase
     protected function setUp(): void
     {
         $this->client = self::createClient();
+
+        $this->clearRateLimiters();
     }
 
     public function testRegisterPageIsDisplayedInFrench(): void
@@ -48,6 +52,31 @@ final class RegistrationControllerTest extends WebTestCase
         self::assertSelectorTextSame('label[for="registration_form_plainPassword"]', 'Mot de passe');
         self::assertSelectorTextSame('label[for="registration_form_agreeTerms"]', "J'accepte les conditions d'utilisation");
         self::assertSelectorTextSame('button[type="submit"]', 'Créer un compte');
+    }
+
+    public function testRegisterSubmissionsAreLimitedToFivePerHourPerIp(): void
+    {
+        for ($i = 0; $i < 5; ++$i) {
+            $this->client->request('POST', '/register');
+            self::assertResponseIsSuccessful();
+        }
+
+        $this->client->request('POST', '/register');
+
+        self::assertResponseStatusCodeSame(429);
+        self::assertResponseHasHeader('Retry-After');
+    }
+
+    public function testRegisterPageStaysReachableWhenSubmissionsAreLimited(): void
+    {
+        // Only POST is limited: displaying the page must keep working
+        for ($i = 0; $i < 6; ++$i) {
+            $this->client->request('POST', '/register');
+        }
+
+        $this->client->request('GET', '/register');
+
+        self::assertResponseIsSuccessful();
     }
 
     public function testSuccessfulRegistrationCreatesUserLogsInAndQueuesConfirmationEmail(): void

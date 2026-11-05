@@ -6,6 +6,7 @@ namespace App\Tests\Controller;
 
 use App\Entity\User;
 use App\Factory\UserFactory;
+use App\Tests\ClearsRateLimiters;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -20,6 +21,7 @@ use Zenstruck\Foundry\Test\ResetDatabase;
  */
 final class VerifyEmailResendTest extends WebTestCase
 {
+    use ClearsRateLimiters;
     use Factories;
     use ResetDatabase;
 
@@ -35,9 +37,7 @@ final class VerifyEmailResendTest extends WebTestCase
     {
         $this->client = self::createClient();
 
-        // The limiter state lives in a filesystem cache pool that survives between tests and runs
-        // (and user ids restart at 1 after each ResetDatabase): start every test with a clean slate.
-        self::getContainer()->get('cache.rate_limiter')->clear();
+        $this->clearRateLimiters();
     }
 
     public function testBannerIsShownToUnverifiedUser(): void

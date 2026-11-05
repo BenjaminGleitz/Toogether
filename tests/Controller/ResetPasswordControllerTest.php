@@ -7,6 +7,7 @@ namespace App\Tests\Controller;
 use App\Entity\ResetPasswordRequest;
 use App\Entity\User;
 use App\Factory\UserFactory;
+use App\Tests\ClearsRateLimiters;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
@@ -19,6 +20,7 @@ use Zenstruck\Foundry\Test\ResetDatabase;
 
 final class ResetPasswordControllerTest extends WebTestCase
 {
+    use ClearsRateLimiters;
     use Factories;
     use ResetDatabase;
 
@@ -30,6 +32,8 @@ final class ResetPasswordControllerTest extends WebTestCase
     protected function setUp(): void
     {
         $this->client = self::createClient();
+
+        $this->clearRateLimiters();
     }
 
     public function testRequestPageIsDisplayedInFrench(): void
@@ -41,6 +45,31 @@ final class ResetPasswordControllerTest extends WebTestCase
         self::assertSelectorTextSame('h1', 'Réinitialiser votre mot de passe');
         self::assertSelectorTextSame('label[for="reset_password_request_form_email"]', 'Adresse e-mail');
         self::assertSelectorTextSame('button', 'Envoyer le lien');
+    }
+
+    public function testResetRequestSubmissionsAreLimitedToFivePerHourPerIp(): void
+    {
+        for ($i = 0; $i < 5; ++$i) {
+            $this->client->request('POST', '/reset-password');
+            self::assertResponseIsSuccessful();
+        }
+
+        $this->client->request('POST', '/reset-password');
+
+        self::assertResponseStatusCodeSame(429);
+        self::assertResponseHasHeader('Retry-After');
+    }
+
+    public function testResetRequestPageStaysReachableWhenSubmissionsAreLimited(): void
+    {
+        // Only POST is limited: displaying the page must keep working
+        for ($i = 0; $i < 6; ++$i) {
+            $this->client->request('POST', '/reset-password');
+        }
+
+        $this->client->request('GET', '/reset-password');
+
+        self::assertResponseIsSuccessful();
     }
 
     public function testRequestForExistingAccountQueuesResetEmail(): void
