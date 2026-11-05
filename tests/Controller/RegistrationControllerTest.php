@@ -7,6 +7,7 @@ namespace App\Tests\Controller;
 use App\Entity\User;
 use App\Enum\Gender;
 use App\Factory\UserFactory;
+use App\Tests\ClearsRateLimiters;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
@@ -20,6 +21,7 @@ use Zenstruck\Foundry\Test\ResetDatabase;
 
 final class RegistrationControllerTest extends WebTestCase
 {
+    use ClearsRateLimiters;
     use Factories;
     use ResetDatabase;
 
@@ -32,9 +34,7 @@ final class RegistrationControllerTest extends WebTestCase
     {
         $this->client = self::createClient();
 
-        // The "register" rate limit (5 POST per hour per IP) is stored in a filesystem cache pool that
-        // survives between tests and runs: every test submits from the same IP, so start from a clean slate.
-        self::getContainer()->get('cache.rate_limiter')->clear();
+        $this->clearRateLimiters();
     }
 
     public function testRegisterPageIsDisplayedInFrench(): void
@@ -52,6 +52,31 @@ final class RegistrationControllerTest extends WebTestCase
         self::assertSelectorTextSame('label[for="registration_form_plainPassword"]', 'Mot de passe');
         self::assertSelectorTextSame('label[for="registration_form_agreeTerms"]', "J'accepte les conditions d'utilisation");
         self::assertSelectorTextSame('button[type="submit"]', 'Créer un compte');
+    }
+
+    public function testRegisterSubmissionsAreLimitedToFivePerHourPerIp(): void
+    {
+        for ($i = 0; $i < 5; ++$i) {
+            $this->client->request('POST', '/register');
+            self::assertResponseIsSuccessful();
+        }
+
+        $this->client->request('POST', '/register');
+
+        self::assertResponseStatusCodeSame(429);
+        self::assertResponseHasHeader('Retry-After');
+    }
+
+    public function testRegisterPageStaysReachableWhenSubmissionsAreLimited(): void
+    {
+        // Only POST is limited: displaying the page must keep working
+        for ($i = 0; $i < 6; ++$i) {
+            $this->client->request('POST', '/register');
+        }
+
+        $this->client->request('GET', '/register');
+
+        self::assertResponseIsSuccessful();
     }
 
     public function testSuccessfulRegistrationCreatesUserLogsInAndQueuesConfirmationEmail(): void
